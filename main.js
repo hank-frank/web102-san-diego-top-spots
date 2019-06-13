@@ -1,39 +1,16 @@
 $(document).ready(function() {
-// template for ajax function
-$.ajax({
-    dataType: 'json',
-    url: url,
-    data: data,
-    success: success
+
+  $.getJSON( "data.json", function(data ) {
+    var items = [];
+    $.each(data, function( key, val ) {
+      items.push( "<tr><td>" + val.name + "</td>" + "<td>" + val.description + "</td>" + "<td><a href='https://www.google.com/maps?q=" + val.location + "'>Link to location in Google Maps.</a></td></tr>" );
+      $("#table").append(items);
+    });
+  // console.log(items);
+
+//This was a way to manually enter each item individually. It was te test of if that works before I included it wihtinn my .each. 
+  // $("#table").find('tbody').append( "<tr><td>" + items[1].name + "</td>" + "<td>" + items[1].description + "</td>" + "<td>" + items[1].location + "</td></tr>" );
+ 
+  // $("#table").find('tbody').append( "<tr><td>" + items[3].name + "</td>" + "<td>" + items[3].description + "</td>" + "<td>" + items[3].location + "</td></tr>" );
   });
 });
-
-//example of retreiving .json data 
-var mydata = JSON.parse(data);
-alert(mydata[0].name);
-alert(mydata[0].description);
-alert(mydata[0].location);
-alert(mydata[1].name);
-alert(mydata[1].description);
-alert(mydata[1].location);
-alert(mydata[2].name);
-alert(mydata[2].description);
-alert(mydata[2].location);
-alert(mydata[3].name); 
-alert(mydata[3].description);
-alert(mydata[3].location);
-alert(mydata[4].name);
-alert(mydata[4].description);
-alert(mydata[4].location);
-alert(mydata[5].name);
-alert(mydata[5].description);
-alert(mydata[5].location);
-alert(mydata[6].name);
-alert(mydata[6].description);
-alert(mydata[6].location);
-alert(mydata[7].name);
-alert(mydata[7].description);
-alert(mydata[7].location);
-alert(mydata[8].name);
-alert(mydata[8].description);
-alert(mydata[8].location);
